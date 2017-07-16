@@ -1,79 +1,22 @@
+import Html exposing (Html, button, div, text)
+import Html.Events exposing (onClick)
 
-module Main exposing (..)
+main =
+  Html.beginnerProgram { model = 0, view = view, update = update }
 
--- Elm Core
-import Html exposing (..)
-import Html.App
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
+type Msg = Increment | Decrement
 
-
--- MODEL
-
-
-type alias Model =
-  {
-  }
-
-
-init : (Model, Cmd Msg)
-init =
-  ( {
-    }
-  , Cmd.none
-  )
-
-
--- UPDATE
-
-
-type Msg
-  = NoOp
-
-
-update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
-    NoOp ->
-      (model, Cmd.none)
+    Increment ->
+      model + 1
 
+    Decrement ->
+      model - 1
 
--- VIEW
-
-
-view : Model -> Html Msg
 view model =
-<% if (bootstrap) { -%>
-  div
-  [ class "container" ]
-  [ p
-    []
-    [ img [ src "/img/elm.png" ] []
-    , text "Hello world"
+  div []
+    [ button [ onClick Decrement ] [ text "-" ]
+    , div [] [ text (toString model) ]
+    , button [ onClick Increment ] [ text "+" ]
     ]
-  ]
-<% } else { -%>
-  div
-  []
-  [ img [ src "/img/elm.png" ] []
-  , text "Hello world"
-  ]
-<% } -%>
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
-
-
-main : Program Never
-main =
-  Html.App.program
-    { init = init
-    , update = update
-    , view = view
-    , subscriptions = subscriptions
-    }
