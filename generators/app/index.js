@@ -100,7 +100,7 @@ module.exports = yeoman.Base.extend({
   writing: function () {
     // project root
     this.copy('README.md', 'README.md');
-    this.copy('elm-package.json', 'elm-package.json');
+    // this.copy('elm-package.json', 'elm-package.json');
     this.copy('package.json', 'package.json');
     this.copy('_gitignore', '.gitignore');
     this.copy('webpack.config.js', 'webpack.config.js');
